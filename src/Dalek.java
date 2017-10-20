@@ -29,7 +29,34 @@ public class Dalek {
      * @param doc The Doctor to move towards.
      */
     public void advanceTowards(Doctor doc) {
-        if (this.col < doc.getCol() && this.row < doc.getRow()) {
+        // Move up left
+        if (this.col > doc.getCol() && this.row > doc.getRow()) {
+            this.row--;
+            this.col--;
+        } // Move up
+        else if (this.col == doc.getCol() && this.row > doc.getRow()) {
+            this.row--;
+        } // Move up right
+        else if (this.col < doc.getCol() && this.row > doc.getRow()) {
+            this.row--;
+            this.col++;
+        } // Move right
+        else if (this.col < doc.getCol() && this.row == doc.getRow()) {
+            this.col++;
+        } // Move down right
+        else if (this.col < doc.getCol() && this.row < doc.getRow()) {
+            this.row++;
+            this.col++;
+        } // Move down
+        else if (this.col == doc.getCol() && this.row < doc.getRow()) {
+            this.row++;
+        } // Move down left
+        else if (this.col > doc.getCol() && this.row < doc.getRow()) {
+            this.row--;
+            this.col--;
+        } // Move left
+        else if (this.col > doc.getCol() && this.row == doc.getRow()) {
+            this.col--;
         }
     }
 
@@ -64,7 +91,7 @@ public class Dalek {
      */
     public boolean hasCrashed() {
         // If the dalek crashes return true then call on the crash method
-        if () {
+        if (row == getRow() && col == getCol()) {
             crash();
             return true;
         } else {
