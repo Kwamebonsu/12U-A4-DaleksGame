@@ -1,4 +1,6 @@
 
+import java.awt.Color;
+
 /**
  * This class manages the interactions between the different pieces of the game:
  * the Board, the Daleks, and the Doctor. It determines when the game is over
@@ -24,6 +26,19 @@ public class CatchGame {
      * (create people, set positions, etc.)
      */
     public CatchGame() {
+//        // If doctor spawns on the same position as one of the daleks respawn the doctor
+//        while ((doctor.getCol() == dalek1.getCol() && doctor.getRow() == dalek1.getRow())
+//                || (doctor.getCol() == dalek2.getCol() && doctor.getRow() == dalek2.getRow())
+//                || (doctor.getCol() == dalek3.getCol() && doctor.getRow() == dalek3.getRow())) {
+// 
+//        }
+        // Place the Daleks on the board
+        board.putPeg(Color.black, dalek1.getRow(), dalek1.getCol());
+        board.putPeg(Color.black, dalek2.getRow(), dalek2.getCol());
+        board.putPeg(Color.black, dalek3.getRow(), dalek3.getCol());
+
+        // Place the Doctor on the board
+        board.putPeg(Color.green, doctor.getRow(), doctor.getCol());
     }
 
     /**
@@ -31,5 +46,15 @@ public class CatchGame {
      * selects a square, when the Daleks move, when the game is won/lost.
      */
     public void playGame() {
+        int pop = 10;
+        while (pop>0) {
+            // Get a click from the user
+            Coordinate click = board.getClick();
+            int newRow = click.getRow();
+            int newCol = click.getCol();
+            doctor.move(newRow, newCol);
+            dalek1.advanceTowards(doctor);
+            pop--;
+        }
     }
 }
