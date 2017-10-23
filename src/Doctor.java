@@ -32,14 +32,16 @@ public class Doctor {
      */
     public void move(int newRow, int newCol) {
         // move the doctor 1 space or randomly generate a new spot
-        if ((newRow == this.row || newRow == this.row++ || newRow == this.row--)
-                && (newCol == this.col || newCol == this.col++ || newCol == this.col--)) {
-            this.row = newRow;
-            this.col = newCol;
+        if ((newRow == getRow() || newRow == getRow() +  1 || newRow == getRow() - 1)
+                && (newCol == getCol() || newCol == getCol() + 1 || newCol == getCol() - 1)) {
+            
         } else { // Teleport
-            this.row = (int) (Math.random() * 12);
-            this.col = (int) (Math.random() * 12);
+            newRow = (int) (Math.random() * 12);
+            newCol = (int) (Math.random() * 12);
         }
+        
+        
+        
     }
 
     /**
