@@ -31,32 +31,32 @@ public class Dalek {
     public void advanceTowards(Doctor doc) {
         // Move up left
         if (this.col > doc.getCol() && this.row > doc.getRow()) {
-            this.row--;
-            this.col--;
+            row--;
+            col--;
         } // Move up
         else if (this.col == doc.getCol() && this.row > doc.getRow()) {
-            this.row--;
+            row--;
         } // Move up right
         else if (this.col < doc.getCol() && this.row > doc.getRow()) {
-            this.row--;
-            this.col++;
+            row--;
+            col++;
         } // Move right
         else if (this.col < doc.getCol() && this.row == doc.getRow()) {
-            this.col++;
+            col++;
         } // Move down right
         else if (this.col < doc.getCol() && this.row < doc.getRow()) {
-            this.row++;
-            this.col++;
+            row++;
+            col++;
         } // Move down
         else if (this.col == doc.getCol() && this.row < doc.getRow()) {
-            this.row++;
+            row++;
         } // Move down left
         else if (this.col > doc.getCol() && this.row < doc.getRow()) {
-            this.row--;
-            this.col--;
+            row++;
+            col--;
         } // Move left
         else if (this.col > doc.getCol() && this.row == doc.getRow()) {
-            this.col--;
+            col--;
         }
     }
 
