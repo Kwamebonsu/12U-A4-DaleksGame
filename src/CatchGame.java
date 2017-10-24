@@ -46,90 +46,16 @@ public class CatchGame {
      * selects a square, when the Daleks move, when the game is won/lost.
      */
     public void playGame() {
-
-        // Get a click from the user
-        Coordinate click = board.getClick();
-        board.removePeg(doctor.getRow(), doctor.getCol());
-        int newRow = click.getRow();
-        int newCol = click.getCol();
-        // 
-        //
-        //
-        //
-        //
-        //Doctor move method
-        //
-        // Move the doctor to the new Location
-        // move the doctor 1 space or randomly generate a new spot
-        if ((newRow == doctor.getRow() || newRow == doctor.getRow() + 1 || newRow == doctor.getRow() - 1)
-                && (newCol == doctor.getCol() || newCol == doctor.getCol() + 1 || newCol == doctor.getCol() - 1)) {
-        } else { // Teleport
-            newRow = (int) (Math.random() * 12);
-            newCol = (int) (Math.random() * 12);
+        while (true) {
+            // Get a click from the user
+            Coordinate click = board.getClick();
+            board.removePeg(doctor.getRow(), doctor.getCol());
+            int newRow = click.getRow();
+            int newCol = click.getCol();
+            // Move the doctor
+            doctor.move(newRow, newCol);
+            // Remove the original peg than put down a new one in a new position
+            board.putPeg(Color.green, doctor.getRow(), doctor.getCol());
         }
-        // doctor move method ends
-        //
-        //
-        //
-        //
-        //
-        // Remove the original peg than put down a new one in a new position
-        doctor = new Doctor(newRow, newCol);
-        board.putPeg(Color.green, doctor.getRow(), doctor.getCol());
-        // move the daleks towards the doctor
-        dalek1.advanceTowards(doctor);
-        //
-        //
-        //
-        //
-        //
-        // AdvanceTowards methods
-        // Move up left
-        if (dalek1.getCol() > doctor.getCol() && dalek1.getRow() > doctor.getRow()) {
-            board.removePeg(dalek1.getRow(), dalek1.getCol());
-            dalek1 = new Dalek(dalek1.getRow() - 1, dalek1.getCol() - 1);
-            board.putPeg(Color.black, dalek1.getRow() - 1, dalek1.getCol() - 1);
-
-        } // Move up
-        else if (dalek1.getCol() == doctor.getCol() && dalek1.getRow() > doctor.getRow()) {
-            board.removePeg(dalek1.getRow(), dalek1.getCol());
-            dalek1 = new Dalek(dalek1.getRow() - 1, dalek1.getCol());
-        } // Move up right
-        else if (dalek1.getCol() < doctor.getCol() && dalek1.getRow() > doctor.getRow()) {
-            board.removePeg(dalek1.getRow(), dalek1.getCol());
-            dalek1 = new Dalek(dalek1.getRow() - 1, dalek1.getCol() + 1);
-        } // Move right
-        else if (dalek1.getCol() < doctor.getCol() && dalek1.getRow() == doctor.getRow()) {
-            board.removePeg(dalek1.getRow(), dalek1.getCol());
-            dalek1 = new Dalek(dalek1.getRow(), dalek1.getCol() + 1);
-        } // Move down right
-        // Continue here
-        //
-        //
-        //
-        //
-        else if (dalek1.getCol() < doctor.getCol() && dalek1.getRow() < doctor.getRow()) {
-            board.removePeg(dalek1.getRow(), dalek1.getCol());
-            dalek1.getRow()++;
-            dalek1.getCol()++;
-        } // Move down
-        else if (dalek1.getCol() == doctor.getCol() && dalek1.getRow() < doctor.getRow()) {
-            dalek1.getRow()++;
-        } // Move down left
-        else if (dalek1.getCol() > doctor.getCol() && dalek1.getRow() < doctor.getRow()) {
-            board.removePeg(dalek1.getRow(), dalek1.getCol());
-            dalek1.getRow() = dalek1.getRow() - 1;
-            dalek1.getCol()--;
-        } // Move left
-        else if (dalek1.getCol() > doctor.getCol() && dalek1.getRow() == doctor.getRow()) {
-            board.removePeg(dalek1.getRow(), dalek1.getCol());
-            dalek1.getCol()--;
-        }
-        // method ends
-        //
-        //
-        //
-        //
-
     }
 }

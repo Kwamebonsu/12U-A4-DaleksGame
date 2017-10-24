@@ -31,13 +31,15 @@ public class Doctor {
      * @param newCol The column the player clicked on.
      */
     public void move(int newRow, int newCol) {
-        // move the doctor 1 space or randomly generate a new spot
+//         move the doctor 1 space or randomly generate a new spot
         if ((newRow == getRow() || newRow == getRow() +  1 || newRow == getRow() - 1)
                 && (newCol == getCol() || newCol == getCol() + 1 || newCol == getCol() - 1)) {
+            row = newRow;
+            col = newCol;
             
         } else { // Teleport
-            newRow = (int) (Math.random() * 12);
-            newCol = (int) (Math.random() * 12);
+            row = (int) (Math.random() * 12);
+            col = (int) (Math.random() * 12);
         }
         
         
