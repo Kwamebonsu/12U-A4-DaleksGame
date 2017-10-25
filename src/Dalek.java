@@ -82,9 +82,8 @@ public class Dalek {
      * Sets the Dalek to be in a crashed state.
      */
     public void crash() {
-        // Prevent the dalek from moving again
-        int crashRow = this.row;
-        int crashCol = this.col;
+        
+        hasCrashed = true;
     }
 
     /**
@@ -93,12 +92,6 @@ public class Dalek {
      * @return true if this Dalek has crashed, false otherwise
      */
     public boolean hasCrashed() {
-        // If the dalek crashes return true then call on the crash method
-        if (row == getRow() && col == getCol()) {
-            crash();
-            return true;
-        } else {
-            return false;
-        }
+        return false;
     }
 }
