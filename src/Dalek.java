@@ -82,7 +82,6 @@ public class Dalek {
      * Sets the Dalek to be in a crashed state.
      */
     public void crash() {
-        
         hasCrashed = true;
     }
 
@@ -92,6 +91,10 @@ public class Dalek {
      * @return true if this Dalek has crashed, false otherwise
      */
     public boolean hasCrashed() {
-        return false;
+        if (hasCrashed == true) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
